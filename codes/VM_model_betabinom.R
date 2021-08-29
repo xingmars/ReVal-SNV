@@ -46,7 +46,7 @@ estimate_par <- function(x,n,a) {
   }
   
   fit <- optim(c(1e-4,1e-4), minuslogl,method='Nelder-Mead', control=list(reltol=1e-8),hessian=F)
-  fit$vcov <- solve(numDeriv::hessian(minuslogl,fit$par))
+  fit$vcov <- tryCatch(solve(numDeriv::hessian(minuslogl,fit$par)), error = function(x) NA)
   
   minuslogl1 <- function(par) {
     d <- dtfunc(x,n,par,a,log=T)
