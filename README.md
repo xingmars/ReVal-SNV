@@ -1,6 +1,7 @@
 ## ReVal-SNV
 
 setwd('codes')
+
 if (!dir.exists('../results')) dir.create('../results')
 
 #### train models
